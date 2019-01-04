@@ -11,5 +11,15 @@ exports.flowControlAnswers = {
     // otherwise the function should return the number, or false if no number
     // was provided or the value provided is not a number
 
+    const fizz     = (num % 3 === 0)
+    const buzz     = (num % 5 === 0)
+    const isNumber = (typeof num === 'number')
+
+    // why not nested ternaries!!!?!?!?!
+    return (!isNumber) ? false
+      : (fizz && buzz) ? 'fizzbuzz'
+      : (fizz)         ? 'fizz'
+      : (buzz)         ? 'buzz'
+      : num
   }
 };

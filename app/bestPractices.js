@@ -8,19 +8,23 @@ exports = typeof window === 'undefined' ? global : window;
  */
 
 exports.bestPracticesAnswers = {
-  globals: function() {
-    myObject = {
+  // literally just add a let = lexical scoping
+  globals() {
+    let myObject = {
       name: 'Jory'
     };
 
     return myObject;
   },
 
-  parseInt: function(num) {
-    return parseInt(num);
+  // I should really be better about using parseInt correctly
+  // I'm really bad about using +n as a shortcut
+  parseInt(num) {
+    return parseInt(num, 10);
   },
 
-  identity: function(val1, val2) {
-
+  // threequels ftw
+  identity(val1, val2) {
+    return val1 === val2
   }
 };
