@@ -12,6 +12,9 @@ exports.regexAnswers = {
   containsNumber: (str) => /\d/.test(str),
 
   containsRepeatingLetter: (str) => /([a-zA-Z])\1/.test(str),
+  //                                 ^        ^    - capture group
+  //                                  ^^^^^^^^     - ...of any lowercase or uppercase letter
+  //                                           ^^  - the captured character
 
   endsWithVowel: (str) => /[aeiou]$/i.test(str),
 

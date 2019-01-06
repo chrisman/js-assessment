@@ -6,10 +6,8 @@ exports = typeof window === 'undefined' ? global : window;
 // write them.
 
 exports.asyncAnswers = {
-  async: (value) =>
-    new Promise((resolve, reject) => {
-      resolve(value)
-    }),
+  // https://open.spotify.com/track/5yZT3gqgZNBkTPX6G3XDTL?si=sdjU0cdST4GW0DHwb93njQ
+  async: (value) => Promise.resolve(value),
 
   // weird writing directly for the browser. took me a second to realize that I
   // could just write straight jquery here

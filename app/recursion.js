@@ -14,17 +14,18 @@ exports.recursionAnswers = {
       dirs.push(file.dir)
 
       file.files.forEach(f => {
-        // if is filename
-        if (typeof f === 'string') {
-          // short circuit for part 2:
-          //   no dirName? proceed
-          //   dirName and dirName in dirs? proceed
-          if (!dirName || dirs.includes(dirName))
-            acc.push(f)
-        // else is dir object
-        } else {
+
+        // personal rule: wrap bools in parenths so they look like bools
+        const isFilename = (typeof f === 'string')
+        const isDir      = (typeof f === 'object')
+        const isValidDir = (!dirName || dirs.includes(dirName))
+
+        // collect the filename, or recur on the dir
+        if (isFilename && isValidDir)
+          acc.push(f)
+        else if (isDir)
           return inner(f, acc, dirs)
-        }
+
       })
 
       // remove current dir on way back "up" through recurssion so we don't
@@ -62,7 +63,7 @@ exports.recursionAnswers = {
   // poor Fibonacci is pretty much only known to the layman because of this
   // mathematical sequence. kind of a shame considering he pretty much single
   // handedly popularized Arabic numerals in Europe at a time when everybody
-  // was still using Roman numerals, which is way cooler.
+  // was still using Roman numerals, which is way cooler
   fibonacci(n) {
     return (n < 1) ? 0
       : (n <= 2) ? 1
@@ -86,33 +87,27 @@ exports.recursionAnswers = {
       .filter((el, idx, arr) => arr.indexOf(el) === idx) // unique
       .map(s => s.split(''))
 
+    // helper function
     const isValid = (arr) => {
       let valid = true
       let a = []
 
       // there's probably a simpler way to do this but I'm going off memory
-      // when I wrote something like this to check for curly, square AND round
+      // when I wrote something like this to check for curly, square, AND round
       // brackets so I think I have a little bit of historical complexity in my
       // head
       arr.forEach(c => {
-        if (c === '(') {
-          a.push(c)
-        } else if (c === ')') {
-          if (a.length) {
-            a.pop()
-          } else {
-            valid = false
-          }
-        }
+        if (c === '(') a.push(c)
+        else if (c === ')')
+          if (a.length) a.pop()
+          else valid = false
       })
 
       return valid
     }
 
-    let answer = perms
+    return perms
       .filter(isValid)
       .map(a => a.join(''))
-
-    return answer
   }
 };

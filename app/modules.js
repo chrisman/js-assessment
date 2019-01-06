@@ -16,13 +16,17 @@ exports = typeof window === 'undefined' ? global : window;
 // does in classical languages.
 
 exports.modulesAnswers = {
-  createModule(greeting, name) {
-    return {
-      greeting,
-      name,
-      sayIt: function() {
-        return `${this.greeting}, ${this.name}`
-      }
+  // personal rule: favor "Hola, Wikipedia!" over "Hello, World!"
+  createModule: (greeting = 'hola', name = 'wikipedia') => ({
+    greeting,
+    name,
+    // this is a good example of where you need to know the difference between
+    // "regular" functions and fat arrow functions. it's easy to oftentimes
+    // think of fat arrows as just shorthand for function definitions, but
+    // using one here will break the scope and cause this function to evaluate
+    // to 'undefined, undefined'.
+    sayIt() {
+      return `${this.greeting}, ${this.name}`
     }
-  }
+  })
 };

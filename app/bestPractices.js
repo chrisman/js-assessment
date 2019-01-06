@@ -9,22 +9,16 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.bestPracticesAnswers = {
   // literally just add a let = lexical scoping
-  globals() {
-    let myObject = {
-      name: 'Jory'
-    };
-
-    return myObject;
-  },
+  // or, avoid variables altogether
+  globals: () => ({
+    name: 'Jory',
+  }),
 
   // I should really be better about using parseInt correctly
   // I'm really bad about using +n as a shortcut
-  parseInt(num) {
-    return parseInt(num, 10);
-  },
+  // or using Number()
+  parseInt: (num) => parseInt(num, 10),
 
-  // threequels ftw
-  identity(val1, val2) {
-    return val1 === val2
-  }
+  // threequels > double equals
+  identity: (val1, val2) => val1 === val2,
 };

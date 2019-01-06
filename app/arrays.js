@@ -1,8 +1,13 @@
 exports = typeof window === 'undefined' ? global : window;
 
 exports.arraysAnswers = {
+  // i can almost aleady hear the giver of the assessment: "now do it again
+  // without using Array.prototype.indexOf"
+  // ...almost
   indexOf: (arr, item) => arr.indexOf(item),
 
+  // I'm playing around with a new self-imposed rule: always provide the
+  // optional 3rd argument to Array.prototype.reduce if possible
   sum: (arr) => arr.reduce((a, b) => a + b, 0),
 
   remove: (arr, item) => arr.filter(i => i !== item),
@@ -10,7 +15,8 @@ exports.arraysAnswers = {
   removeWithoutCopy(arr, item) {
     // mutating while iterating always feels like 🤮
     for(let i = arr.length; i > 0; i--) {
-      if (arr[i] === item) arr.splice(i, 1)
+      if (arr[i] === item)
+        arr.splice(i, 1)
     }
     return arr
   },

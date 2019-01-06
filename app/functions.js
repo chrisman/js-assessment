@@ -8,6 +8,7 @@ exports.functionsAnswers = {
   // `fn.call` is stull useful in certain situations
   speak: (fn, obj) => fn.call(obj),
 
+  // functionfunction
   functionFunction: (str) => (name) => `${str}, ${name}`,
 
   // this is kind of a convoluted closure
@@ -26,9 +27,11 @@ exports.functionsAnswers = {
   // see above comment
   callIt: (fn, ...args) => fn(...args),
 
-  // hi
+  // 👋 hi 
   partialUsingArguments: (fn, ...args) => (...otherArgs) => fn(...args.concat(otherArgs)),
 
+  // curry was such a badass that he has languages and concepts named after
+  // each and every one of his names: first, middle, and last
   curryIt: function(fn) {
     const innerCurry = (args, len) => (arg) => {
       args.push(arg);
