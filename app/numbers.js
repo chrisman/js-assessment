@@ -10,7 +10,8 @@ exports.numbersAnswers = {
   // if I saw this line in somebody else's code i would curse them
   // it right-shifts the number and converts it to binary...
   // and then leftpads it with zeros 🤮
-  convertToBinary: (num) => (Array.from({ length: 8 }).map(_ => 0).join('') + (num >>> 0).toString(2)).slice(-8),
+  convertToBinary: (num) =>
+    (Array.from({ length: 8 }).map(_ => 0).join('') + (num >>> 0).toString(2)).slice(-8),
 
   // this is weird and funky and I don't like it
   // particularly, I don't like using the `+` below

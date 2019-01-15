@@ -12,10 +12,11 @@ exports.flowControlAnswers = {
     const isNumber = (typeof num === 'number')
 
     // why not nested ternaries!!!?!?!?!
+    // https://medium.com/javascript-scene/nested-ternaries-are-great-361bddd0f340
     return (!isNumber) ? false
       : (fizz && buzz) ? 'fizzbuzz'
       : (fizz)         ? 'fizz'
       : (buzz)         ? 'buzz'
       : num
   }
-};
+}

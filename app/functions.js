@@ -35,7 +35,8 @@ exports.functionsAnswers = {
   curryIt: function(fn) {
     const innerCurry = (args, len) => (arg) => {
       args.push(arg);
-      return (args.length === len)
+      return
+        (args.length === len)
         ? fn(...args)
         : innerCurry(args, len)
     }
